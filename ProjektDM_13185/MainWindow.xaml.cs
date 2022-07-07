@@ -121,10 +121,6 @@ namespace ProjektDM_13185
                 dataGrid.ItemsSource = null;
                 dataGrid.ItemsSource = tableViews;
             }
-            
-
         }
-
-
     }
 }
