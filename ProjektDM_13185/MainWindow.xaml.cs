@@ -21,8 +21,10 @@ namespace ProjektDM_13185
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int ID = 0;
         public class tableView
         {
+            public int ID { get; set; }
             public string Imie { get; set; }
             public string Nazwisko { get; set; }
             public string NrTelefonu { get; set; }
@@ -38,6 +40,7 @@ namespace ProjektDM_13185
             {
                 return new tableView
                 {
+                    ID = pracownik.id,
                     Imie = pracownik.imie,
                     Nazwisko = pracownik.nazwisko,
                     NrTelefonu = pracownik.nr_tel,
@@ -50,7 +53,7 @@ namespace ProjektDM_13185
                 };
             }
         }
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -66,6 +69,7 @@ namespace ProjektDM_13185
 
                             select new tableView
                             {
+                                ID = worker.id,
                                 Imie = worker.imie,
                                 Nazwisko = worker.nazwisko,
                                 NrTelefonu = worker.nr_tel,
@@ -81,5 +85,31 @@ namespace ProjektDM_13185
             dataGrid.ItemsSource = values;
 
         }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            WorkersEntities x = new WorkersEntities();
+            tableView data = dataGrid.SelectedItem as tableView;
+            var zapytanie = from worker in x.Pracownik
+                            where ID == worker.id
+                            select worker;
+            Pracownik usun = zapytanie.SingleOrDefault();
+            if(delete != null)
+            {
+                IList<tableView> tableViews = dataGrid.ItemsSource as IList<tableView>;
+                if(tableViews != null)
+                {
+                    x.Pracownik.Remove(usun);
+                    x.SaveChanges();
+                    tableViews.Remove(data);
+                }
+                dataGrid.ItemsSource = null;
+                dataGrid.ItemsSource = tableViews;
+            }
+            
+
+        }
+
+
     }
 }
