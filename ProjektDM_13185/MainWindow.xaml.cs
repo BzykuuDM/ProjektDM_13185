@@ -85,14 +85,29 @@ namespace ProjektDM_13185
             dataGrid.ItemsSource = values;
 
         }
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataGrid.SelectedIndex >= 0)
+            {
+                if (dataGrid.SelectedItems.Count >= 0)
+                {
+                    if (dataGrid.SelectedItems[0].GetType() == typeof(tableView))
+                    {
+                        tableView data = (tableView)dataGrid.SelectedItems[0];
+                        ID = data.ID;
+                    }
+                }
+            }
+        }
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             WorkersEntities x = new WorkersEntities();
             tableView data = dataGrid.SelectedItem as tableView;
             var zapytanie = from worker in x.Pracownik
-                            where ID == worker.id
+                            where worker.id == ID
                             select worker;
+
             Pracownik usun = zapytanie.SingleOrDefault();
             if(delete != null)
             {
