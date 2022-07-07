@@ -10,7 +10,7 @@
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="435" Margin="10,38,0,0" VerticalAlignment="Top" Width="972"/>
         <Button x:Name="add" Content="Dodaj nowego pracownika" HorizontalAlignment="Left" Margin="10,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFA4FF79"/>
         <Button x:Name="edit" Content="Edytuj dane pracownika" HorizontalAlignment="Left" Margin="273,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFFFF482"/>
-        <Button x:Name="refresh" Content="Odśwież" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Background="#FFA8FFEF"/>
+        <Button x:Name="refresh" Content="Odśwież" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Background="#FFA8FFEF" Click="refresh_Click"/>
         <Button x:Name="delete" Content="Usuń pracownika" HorizontalAlignment="Left" Margin="827,524,0,0" VerticalAlignment="Top" Width="155" Height="35" Background="#FFFF6464"/>
 
 

@@ -24,5 +24,10 @@ namespace ProjektDM_13185
         {
             InitializeComponent();
         }
+
+        private void refresh_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

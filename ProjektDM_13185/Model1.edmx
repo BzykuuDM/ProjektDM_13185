@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dni_urlopowe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dni_url" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Dzial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dzial" Type="varchar" MaxLength="20" />
+          <Property Name="stanowisko" Type="varchar" MaxLength="20" />
+          <Property Name="wyplata" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Kraj_pochodzenia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kraj" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dzial_id" Type="int" Nullable="false" />
+          <Property Name="kraj_id" Type="int" Nullable="false" />
+          <Property Name="urlop_id" Type="int" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" />
+          <Property Name="PESEL" Type="varchar" MaxLength="11" />
+          <Property Name="nr_tel" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="fk">
+          <End Role="Dzial" Type="Self.Dzial" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dzial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="dzial_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1">
+          <End Role="Kraj_pochodzenia" Type="Self.Kraj_pochodzenia" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj_pochodzenia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk2">
+          <End Role="Dni_urlopowe" Type="Self.Dni_urlopowe" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dni_urlopowe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="urlop_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorkersModelStoreContainer">
+          <EntitySet Name="Dni_urlopowe" EntityType="Self.Dni_urlopowe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dzial" EntityType="Self.Dzial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kraj_pochodzenia" EntityType="Self.Kraj_pochodzenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownik" EntityType="Self.Pracownik" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk" Association="Self.fk">
+            <End Role="Dzial" EntitySet="Dzial" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="fk1" Association="Self.fk1">
+            <End Role="Kraj_pochodzenia" EntitySet="Kraj_pochodzenia" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="fk2" Association="Self.fk2">
+            <End Role="Dni_urlopowe" EntitySet="Dni_urlopowe" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dni_urlopowe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dni_url" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.fk2" FromRole="Dni_urlopowe" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Dzial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dzial1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="stanowisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="wyplata" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.fk" FromRole="Dzial" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Kraj_pochodzenia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kraj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.fk1" FromRole="Kraj_pochodzenia" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dzial_id" Type="Int32" Nullable="false" />
+          <Property Name="kraj_id" Type="Int32" Nullable="false" />
+          <Property Name="urlop_id" Type="Int32" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="nr_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dni_urlopowe" Relationship="Self.fk2" FromRole="Pracownik" ToRole="Dni_urlopowe" />
+          <NavigationProperty Name="Dzial" Relationship="Self.fk" FromRole="Pracownik" ToRole="Dzial" />
+          <NavigationProperty Name="Kraj_pochodzenia" Relationship="Self.fk1" FromRole="Pracownik" ToRole="Kraj_pochodzenia" />
+        </EntityType>
+        <Association Name="fk2">
+          <End Role="Dni_urlopowe" Type="Self.Dni_urlopowe" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dni_urlopowe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="urlop_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk">
+          <End Role="Dzial" Type="Self.Dzial" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dzial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="dzial_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1">
+          <End Role="Kraj_pochodzenia" Type="Self.Kraj_pochodzenia" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj_pochodzenia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorkersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dni_urlopowe" EntityType="Self.Dni_urlopowe" />
+          <EntitySet Name="Dzial" EntityType="Self.Dzial" />
+          <EntitySet Name="Kraj_pochodzenia" EntityType="Self.Kraj_pochodzenia" />
+          <EntitySet Name="Pracownik" EntityType="Self.Pracownik" />
+          <AssociationSet Name="fk2" Association="Self.fk2">
+            <End Role="Dni_urlopowe" EntitySet="Dni_urlopowe" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="fk" Association="Self.fk">
+            <End Role="Dzial" EntitySet="Dzial" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="fk1" Association="Self.fk1">
+            <End Role="Kraj_pochodzenia" EntitySet="Kraj_pochodzenia" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkersModelStoreContainer" CdmEntityContainer="WorkersEntities">
+          <EntitySetMapping Name="Dni_urlopowe">
+            <EntityTypeMapping TypeName="WorkersModel.Dni_urlopowe">
+              <MappingFragment StoreEntitySet="Dni_urlopowe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dni_url" ColumnName="dni_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dzial">
+            <EntityTypeMapping TypeName="WorkersModel.Dzial">
+              <MappingFragment StoreEntitySet="Dzial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dzial1" ColumnName="dzial" />
+                <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+                <ScalarProperty Name="wyplata" ColumnName="wyplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kraj_pochodzenia">
+            <EntityTypeMapping TypeName="WorkersModel.Kraj_pochodzenia">
+              <MappingFragment StoreEntitySet="Kraj_pochodzenia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownik">
+            <EntityTypeMapping TypeName="WorkersModel.Pracownik">
+              <MappingFragment StoreEntitySet="Pracownik">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dzial_id" ColumnName="dzial_id" />
+                <ScalarProperty Name="kraj_id" ColumnName="kraj_id" />
+                <ScalarProperty Name="urlop_id" ColumnName="urlop_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="nr_tel" ColumnName="nr_tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
