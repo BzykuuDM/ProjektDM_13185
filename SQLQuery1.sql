@@ -1,4 +1,6 @@
-﻿USE Workers;
+﻿CREATE DATABASE Workers;
+
+USE Workers;
 
 CREATE TABLE Dzial (
 	id int constraint pk1 primary key identity(1, 1),

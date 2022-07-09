@@ -179,10 +179,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Workers.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Workers_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Workers.mdf</DependentUpon>
     </Content>
     <Content Include="Model1.Context.tt">
