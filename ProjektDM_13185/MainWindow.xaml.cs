@@ -122,5 +122,10 @@ namespace ProjektDM_13185
                 dataGrid.ItemsSource = tableViews;
             }
         }
+
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
