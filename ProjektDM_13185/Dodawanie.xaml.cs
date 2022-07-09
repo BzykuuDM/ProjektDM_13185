@@ -26,7 +26,6 @@ namespace ProjektDM_13185
         public Dodawanie()
         {
             InitializeComponent();
-
         }
 
         private void dzial_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -231,8 +230,6 @@ namespace ProjektDM_13185
             db.Pracownik.Add(worker);
             db.SaveChanges();
             Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.refresh_Click(null, null);
 
         }
 

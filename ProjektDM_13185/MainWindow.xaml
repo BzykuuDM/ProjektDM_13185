@@ -8,7 +8,7 @@
         Title="Menedżer pracowników" Height="600" Width="1000">
     <Viewbox Stretch="Fill">
         <Grid Height="584.04" Width="1000">
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="299" Margin="10,38,0,0" VerticalAlignment="Top" Width="972" SelectionChanged="dataGrid_SelectionChanged"/>
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="299" Margin="10,38,0,0" VerticalAlignment="Top" Width="972" SelectionChanged="dataGrid_SelectionChanged" CanUserAddRows="False" SelectionMode="Single" IsReadOnly="True" CanUserResizeColumns="False"/>
 
             <TextBox x:Name="Imie" HorizontalAlignment="Left" Margin="100,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White"/>
             <Label Content="Imię:" HorizontalAlignment="Left" Margin="60,356,0,0" VerticalAlignment="Top"/>
@@ -23,8 +23,9 @@
 
             <Button x:Name="add" Content="Dodaj nowego pracownika" HorizontalAlignment="Left" Margin="742,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFA4FF79" Click="add_Click"/>
             <Button x:Name="edit" Content="Edytuj dane pracownika" HorizontalAlignment="Left" Margin="33,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFFFF482" Click="edit_Click"/>
-            <Button x:Name="refresh" Content="Odśwież" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Background="#FFA8FFEF" Click="refresh_Click"/>
+            <Button x:Name="refresh" Content="Odśwież listę pracowników" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="151" Background="#FFA8FFEF" Click="refresh_Click"/>
             <Button x:Name="delete" Content="Usuń pracownika" HorizontalAlignment="Left" Margin="827,360,0,0" VerticalAlignment="Top" Width="155" Height="35" Background="#FFFF6464" Click="delete_Click"/>
+            <Rectangle HorizontalAlignment="Left" Height="462" Margin="10,342,0,0" Stroke="#FFDADADA" VerticalAlignment="Top" Width="476" Stretch="Uniform" Fill="#33E6FF11" IsEnabled="False" Panel.ZIndex="-10"/>
         </Grid>
 
 

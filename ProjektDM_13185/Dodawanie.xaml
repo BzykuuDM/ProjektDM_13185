@@ -38,7 +38,5 @@
         <Button x:Name="add" Content="Dodaj i zapisz" HorizontalAlignment="Left" Margin="338,207,0,0" VerticalAlignment="Top" Background="#FF8EFF84" Height="40" Width="98" Click="add_Click"/>
         <Button x:Name="cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Background="#FFFB8282" Height="30" Width="96" Click="cancel_Click"/>
 
-
-
     </Grid>
 </Window>

@@ -34,7 +34,7 @@ namespace ProjektDM_13185
             public string Dzial { get; set; }
             public string Stanowisko { get; set; }
             public decimal Wynagrodzenie { get; set; }
-            public string DniUrlopowe { get; set; }
+            public string Dni_Urlopowe { get; set; }
 
 
             public static tableView From(Pracownik pracownik, Dzial dzial, Kraj_pochodzenia kraj, Dni_urlopowe urlop)
@@ -50,7 +50,7 @@ namespace ProjektDM_13185
                     Dzial = dzial.dzial1,
                     Stanowisko = dzial.stanowisko,
                     Wynagrodzenie = (decimal)dzial.wyplata,
-                    DniUrlopowe = urlop.dni_url,
+                    Dni_Urlopowe = urlop.dni_url,
                 };
             }
         }
@@ -79,10 +79,11 @@ namespace ProjektDM_13185
                                 Dzial = dzial.dzial1,
                                 Stanowisko = dzial.stanowisko,
                                 Wynagrodzenie = (decimal)dzial.wyplata,
-                                DniUrlopowe = dn_url.dni_url,
+                                Dni_Urlopowe = dn_url.dni_url,
                             };
 
             ObservableCollection<tableView> values = new ObservableCollection<tableView>(zapytanie.ToList());
+            dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = values;
 
         }
@@ -103,24 +104,31 @@ namespace ProjektDM_13185
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            WorkersEntities x = new WorkersEntities();
-            tableView data = dataGrid.SelectedItem as tableView;
-            var zapytanie = from worker in x.Pracownik
-                            where worker.id == ID
-                            select worker;
 
-            Pracownik usun = zapytanie.SingleOrDefault();
-            if (delete != null)
+            MessageBoxResult potwierdzenie = MessageBox.Show("Czy na pewno chcesz usunąć pracownika?", "Potwierdzenie wyboru", MessageBoxButton.YesNo);
+
+            if (potwierdzenie == MessageBoxResult.Yes)
             {
-                IList<tableView> tableViews = dataGrid.ItemsSource as IList<tableView>;
-                if (tableViews != null)
+
+                WorkersEntities x = new WorkersEntities();
+                tableView data = dataGrid.SelectedItem as tableView;
+                var zapytanie = from worker in x.Pracownik
+                                where worker.id == ID
+                                select worker;
+
+                Pracownik usun = zapytanie.SingleOrDefault();
+                if (delete != null)
                 {
-                    x.Pracownik.Remove(usun);
-                    x.SaveChanges();
-                    tableViews.Remove(data);
+                    IList<tableView> tableViews = dataGrid.ItemsSource as IList<tableView>;
+                    if (tableViews != null)
+                    {
+                        x.Pracownik.Remove(usun);
+                        x.SaveChanges();
+                        tableViews.Remove(data);
+                    }
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = tableViews;
                 }
-                dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = tableViews;
             }
         }
 
@@ -148,6 +156,7 @@ namespace ProjektDM_13185
                     workerSub.nazwisko = Nazwisko1.Text;
                     workerSub.nr_tel = nr_tel.Text;
                     workerSub.urlop_id = int.Parse(dni_urlop.Text);
+                    workerSub.PESEL = pesel.Text;
                 }
                 db.SaveChanges();
                 refresh_Click(null, null);
