@@ -125,7 +125,8 @@ namespace ProjektDM_13185
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-
+            Dodawanie dodawanie = new Dodawanie();
+            dodawanie.Show();
         }
     }
 }

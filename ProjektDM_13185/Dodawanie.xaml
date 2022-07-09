@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektDM_13185"
         mc:Ignorable="d"
-        Title="Dodawanie" Height="276" Width="462">
+        Title="Dodawanie" Height="296" Width="477">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="Imie" HorizontalAlignment="Left" Margin="83,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White" IsEnabled="False"/>
+        <TextBox x:Name="Imie" HorizontalAlignment="Left" Margin="83,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White"/>
         <Label Content="Imię:" HorizontalAlignment="Left" Margin="43,23,0,0" VerticalAlignment="Top"/>
         <Label Content="Nazwisko:" HorizontalAlignment="Left" Margin="248,23,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Nazwisko1" HorizontalAlignment="Left" Margin="316,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="nr_tel" HorizontalAlignment="Left" Margin="83,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Numer tel:" HorizontalAlignment="Left" Margin="13,67,0,0" VerticalAlignment="Top"/>
         <Label Content="PESEL:" HorizontalAlignment="Left" Margin="268,67,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="pesel" HorizontalAlignment="Left" Margin="316,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="pesel" HorizontalAlignment="Left" Margin="316,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Kraj:" HorizontalAlignment="Left" Margin="46,113,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="kraje" HorizontalAlignment="Left" Margin="84,115,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Polska"/>
@@ -28,15 +28,15 @@
         <Label Content="Dział:" HorizontalAlignment="Left" Margin="40,157,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <Label Content="Stanowisko:" HorizontalAlignment="Left" Margin="238,157,0,0" VerticalAlignment="Top"/>
         <Label Content="Dni Urlopowe:" HorizontalAlignment="Left" Margin="225,113,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dni_urlop" HorizontalAlignment="Left" Margin="316,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Center" IsEnabled="False"/>
-        <ComboBox x:Name="dzial" HorizontalAlignment="Left" Margin="84,159,0,0" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="dni_urlop" HorizontalAlignment="Left" Margin="316,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Center"/>
+        <ComboBox x:Name="dzial" HorizontalAlignment="Left" Margin="84,159,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="dzial_SelectionChanged">
             <ComboBoxItem Content="Administracja"/>
             <ComboBoxItem Content="Obsługa klienta"/>
             <ComboBoxItem Content="Transport"/>
         </ComboBox>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="316,159,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button x:Name="add" Content="Dodaj i zapisz" HorizontalAlignment="Left" Margin="338,207,0,0" VerticalAlignment="Top" Background="#FF8EFF84" Height="40" Width="98"/>
-        <Button x:Name="cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Background="#FFFB8282" Height="30" Width="96"/>
+        <ComboBox x:Name="stanowisko" HorizontalAlignment="Left" Margin="316,159,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Button x:Name="add" Content="Dodaj i zapisz" HorizontalAlignment="Left" Margin="338,207,0,0" VerticalAlignment="Top" Background="#FF8EFF84" Height="40" Width="98" Click="add_Click"/>
+        <Button x:Name="cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Background="#FFFB8282" Height="30" Width="96" Click="cancel_Click"/>
 
 
 
