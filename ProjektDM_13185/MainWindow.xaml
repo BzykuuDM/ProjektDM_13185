@@ -8,13 +8,25 @@
         Title="Menedżer pracowników" Height="600" Width="1000">
     <Viewbox Stretch="Fill">
         <Grid Height="584.04" Width="1000">
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="435" Margin="10,38,0,0" VerticalAlignment="Top" Width="972" SelectionChanged="dataGrid_SelectionChanged"/>
-            <Button x:Name="add" Content="Dodaj nowego pracownika" HorizontalAlignment="Left" Margin="10,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFA4FF79" Click="add_Click"/>
-            <Button x:Name="edit" Content="Edytuj dane pracownika" HorizontalAlignment="Left" Margin="273,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFFFF482"/>
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="299" Margin="10,38,0,0" VerticalAlignment="Top" Width="972" SelectionChanged="dataGrid_SelectionChanged"/>
+
+            <TextBox x:Name="Imie" HorizontalAlignment="Left" Margin="100,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White"/>
+            <Label Content="Imię:" HorizontalAlignment="Left" Margin="60,356,0,0" VerticalAlignment="Top"/>
+            <Label Content="Nazwisko:" HorizontalAlignment="Left" Margin="33,395,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Nazwisko1" HorizontalAlignment="Left" Margin="101,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="nr_tel" HorizontalAlignment="Left" Margin="332,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Numer tel:" HorizontalAlignment="Left" Margin="262,356,0,0" VerticalAlignment="Top"/>
+            <Label Content="PESEL:" HorizontalAlignment="Left" Margin="52,433,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="pesel" HorizontalAlignment="Left" Margin="100,437,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Dni Urlopowe:" HorizontalAlignment="Left" Margin="242,395,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="dni_urlop" HorizontalAlignment="Left" Margin="333,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Center"/>
+
+            <Button x:Name="add" Content="Dodaj nowego pracownika" HorizontalAlignment="Left" Margin="742,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFA4FF79" Click="add_Click"/>
+            <Button x:Name="edit" Content="Edytuj dane pracownika" HorizontalAlignment="Left" Margin="33,493,0,0" VerticalAlignment="Top" Width="240" Height="66" Background="#FFFFF482" Click="edit_Click"/>
             <Button x:Name="refresh" Content="Odśwież" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Background="#FFA8FFEF" Click="refresh_Click"/>
-            <Button x:Name="delete" Content="Usuń pracownika" HorizontalAlignment="Left" Margin="827,524,0,0" VerticalAlignment="Top" Width="155" Height="35" Background="#FFFF6464" Click="delete_Click"/>
-
-
+            <Button x:Name="delete" Content="Usuń pracownika" HorizontalAlignment="Left" Margin="827,360,0,0" VerticalAlignment="Top" Width="155" Height="35" Background="#FFFF6464" Click="delete_Click"/>
         </Grid>
+
+
     </Viewbox>
 </Window>

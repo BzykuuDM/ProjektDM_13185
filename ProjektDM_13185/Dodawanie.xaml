@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektDM_13185"
         mc:Ignorable="d"
-        Title="Dodawanie" Height="296" Width="477">
+        Title="Dodawanie" Height="296" Width="477" ResizeMode="NoResize">
     <Grid Margin="0,0,0,-6">
         <TextBox x:Name="Imie" HorizontalAlignment="Left" Margin="83,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White"/>
         <Label Content="Imię:" HorizontalAlignment="Left" Margin="43,23,0,0" VerticalAlignment="Top"/>

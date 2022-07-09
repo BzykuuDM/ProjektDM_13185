@@ -128,5 +128,10 @@ namespace ProjektDM_13185
             Dodawanie dodawanie = new Dodawanie();
             dodawanie.Show();
         }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
