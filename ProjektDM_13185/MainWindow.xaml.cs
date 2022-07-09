@@ -60,7 +60,7 @@ namespace ProjektDM_13185
             InitializeComponent();
         }
 
-        private void refresh_Click(object sender, RoutedEventArgs e)
+        public void refresh_Click(object sender, RoutedEventArgs e)
         {
             WorkersEntities x = new WorkersEntities();
             var zapytanie = from worker in x.Pracownik

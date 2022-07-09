@@ -20,17 +20,59 @@ namespace ProjektDM_13185
     /// </summary>
     public partial class Dodawanie : Window
     {
+        int dzial_id = 1;
+        int kraj_id = 1;
+        int urlop_id = 1;
         public Dodawanie()
         {
             InitializeComponent();
+
+        }
+
+        private void dzial_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<string> lista = new List<string>();
+
+            switch (dzial.SelectedIndex)
+            {
+                case 0:
+                    lista.AddRange(new List<string>()
+                    {
+                        "Kierownik działu",
+                        "Menedżer",
+                        "Pracownik biurowy",
+                        "Wsparcie wewnętrzne",
+                    });
+                    break;
+                case 1:
+                    lista.AddRange(new List<string>()
+                    {
+                        "Kierownik działu",
+                        "Menedżer",
+                        "Wsparcie klienta",
+                    });
+                    break;
+                case 2:
+                    lista.AddRange(new List<string>()
+                    {
+                        "Kierownik działu",
+                        "Menedżer",
+                        "Kierowca",
+                        "Pracownik magazynowy"
+                    });
+                    break;
+            }
+
+            ObservableCollection<string> x = new ObservableCollection<string>(lista);
+            stanowisko.IsEnabled = true;
+            stanowisko.ItemsSource = null;
+            stanowisko.ItemsSource = x;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
             WorkersEntities db = new WorkersEntities();
-            int dzial_id = 1;
-            int kraj_id = 1;
-            int urlop_id = 1;
+            
             switch ((string)dzial.SelectedValue)
             {
                 case "Administracja" when (string)stanowisko.SelectedValue == "Kierownik działu":
@@ -93,7 +135,7 @@ namespace ProjektDM_13185
                     break;
             }
 
-            switch ((string)dni_urlop.Text)
+            switch (dni_urlop.Text)
             {
                 case "1":
                     urlop_id = 1;
@@ -188,7 +230,9 @@ namespace ProjektDM_13185
             };
             db.Pracownik.Add(worker);
             db.SaveChanges();
-
+            Close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.refresh_Click(null, null);
 
         }
 
@@ -197,44 +241,6 @@ namespace ProjektDM_13185
             Close();
         }
 
-        private void dzial_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            List<string> lista = new List<string>();
 
-            switch (dzial.SelectedIndex)
-            {
-                case 0:
-                    lista.AddRange(new List<string>()
-                    {
-                        "Kierownik działu",
-                        "Menedżer",
-                        "Pracownik biurowy",
-                        "Wsparcie wewnętrzne",
-                    });
-                    break;
-                case 1:
-                    lista.AddRange(new List<string>()
-                    {
-                        "Kierownik działu",
-                        "Menedżer",
-                        "Wsparcie klienta",                       
-                    });
-                    break;
-                case 2:
-                    lista.AddRange(new List<string>()
-                    {
-                        "Kierownik działu",
-                        "Menedżer",
-                        "Kierowca",
-                        "Pracownik magazynowy"
-                    });
-                    break;
-            }
-
-            ObservableCollection<string> x = new ObservableCollection<string>(lista);
-            stanowisko.IsEnabled = true;
-            stanowisko.ItemsSource = null;
-            stanowisko.ItemsSource = x;
-        }
     }
 }
