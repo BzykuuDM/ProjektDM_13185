@@ -16,7 +16,7 @@
         <Label Content="PESEL:" HorizontalAlignment="Left" Margin="268,67,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="pesel" HorizontalAlignment="Left" Margin="316,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Kraj:" HorizontalAlignment="Left" Margin="46,113,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="kraje" HorizontalAlignment="Left" Margin="84,115,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="kraje" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="84,115,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Polska"/>
             <ComboBoxItem Content="Ukraina"/>
             <ComboBoxItem Content="Białoruś"/>
@@ -29,7 +29,7 @@
         <Label Content="Stanowisko:" HorizontalAlignment="Left" Margin="238,157,0,0" VerticalAlignment="Top"/>
         <Label Content="Dni Urlopowe:" HorizontalAlignment="Left" Margin="225,113,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="dni_urlop" HorizontalAlignment="Left" Margin="316,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Center"/>
-        <ComboBox x:Name="dzial" HorizontalAlignment="Left" Margin="84,159,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="dzial_SelectionChanged">
+        <ComboBox x:Name="dzial" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="84,159,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="dzial_SelectionChanged">
             <ComboBoxItem Content="Administracja"/>
             <ComboBoxItem Content="Obsługa klienta"/>
             <ComboBoxItem Content="Transport"/>

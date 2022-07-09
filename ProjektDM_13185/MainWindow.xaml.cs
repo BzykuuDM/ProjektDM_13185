@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace ProjektDM_13185
 {
@@ -109,10 +110,10 @@ namespace ProjektDM_13185
                             select worker;
 
             Pracownik usun = zapytanie.SingleOrDefault();
-            if(delete != null)
+            if (delete != null)
             {
                 IList<tableView> tableViews = dataGrid.ItemsSource as IList<tableView>;
-                if(tableViews != null)
+                if (tableViews != null)
                 {
                     x.Pracownik.Remove(usun);
                     x.SaveChanges();
@@ -131,7 +132,27 @@ namespace ProjektDM_13185
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult potwierdzenie = MessageBox.Show("Czy na pewno chcesz edytować dane pracownika?", "Potwierdzenie wyboru", MessageBoxButton.YesNo);
 
+            if (potwierdzenie == MessageBoxResult.Yes)
+            {
+                WorkersEntities db = new WorkersEntities();
+
+                var pracownik = from worker in db.Pracownik
+                                join urlop in db.Dni_urlopowe on worker.urlop_id equals urlop.id
+                                select worker;
+                Pracownik workerSub = pracownik.SingleOrDefault();
+                if (workerSub != null)
+                {
+                    workerSub.imie = Imie.Text;
+                    workerSub.nazwisko = Nazwisko1.Text;
+                    workerSub.nr_tel = nr_tel.Text;
+                    workerSub.urlop_id = int.Parse(dni_urlop.Text);
+                }
+                db.SaveChanges();
+                refresh_Click(null, null);
+
+            }
         }
     }
 }
